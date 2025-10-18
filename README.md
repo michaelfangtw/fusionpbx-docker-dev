@@ -5,7 +5,7 @@
 
 A comprehensive Docker solution for FusionPBX, providing a complete VoIP platform with all necessary components pre-configured and ready to deploy.
 
-**Stack**: Ubuntu 20.04 • FusionPBX 5.1 • FreeSWITCH 1.10.9 • PHP 7.4 • PostgreSQL 12
+**Stack**: Ubuntu 20.04 • FusionPBX 5.2 • FreeSWITCH 1.10.9 • PHP 7.4 • PostgreSQL 12
 
 ## 📚 References
 
@@ -31,7 +31,7 @@ A comprehensive Docker solution for FusionPBX, providing a complete VoIP platfor
 | Component | Version |
 |-----------|---------|
 | **Base OS** | Ubuntu 20.04 |
-| **FusionPBX** | 5.1 |
+| **FusionPBX** | 5.2 |
 | **FreeSWITCH** | 1.10.9 |
 | **PHP** | 7.4 |
 | **PostgreSQL** | 12 |
@@ -68,7 +68,7 @@ sudo chown 33:33 config -R
 Pull the latest image from Docker Hub:
 
 ```bash
-docker pull michaelfangtw/fusionpbx-docker-dev:5.1
+docker pull michaelfangtw/fusionpbx-docker-dev:5.2
 ```
 
 #### Option B: Build Locally
@@ -76,21 +76,21 @@ docker pull michaelfangtw/fusionpbx-docker-dev:5.1
 If you want to build the image locally:
 
 ```bash
-docker build -t fusionpbx-docker-dev:5.1 .
+docker build -t fusionpbx-docker-dev:5.2 .
 ```
 
 ### Step 3: Configure Docker Compose
 
 The `docker-compose.yaml` file is already configured. Choose your preferred method:
 
-- **Pre-built image** (default): Uses `michaelfangtw/fusionpbx-docker-dev:5.1`
+- **Pre-built image** (default): Uses `michaelfangtw/fusionpbx-docker-dev:5.2`
 - **Local build**: Uncomment the `build` section in the compose file
 
 ```yaml
 services:
   pbx:
     # Use pre-built image from Docker Hub
-    image: michaelfangtw/fusionpbx-docker-dev:5.1
+    image: michaelfangtw/fusionpbx-docker-dev:5.2
     
     # Or build locally (uncomment to use)
     # build:
@@ -273,7 +273,7 @@ docker exec -it fusionpbx /bin/bash
 # Exit the container
 
 # Commit changes to create a new image
-docker commit fusionpbx fusionpbx-docker-dev:5.1-custom
+docker commit fusionpbx fusionpbx-docker-dev:5.2-custom
 ```
 
 #### View Container Logs
