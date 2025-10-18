@@ -273,7 +273,9 @@ docker exec -it fusionpbx /bin/bash
 # Exit the container
 
 # Commit changes to create a new image
-docker commit fusionpbx fusionpbx-docker-dev:5.2-custom
+TAG=5.2
+docker commit fusionpbx michaelfangtw/fusionpbx-docker-dev:$TAG
+docker push michaelfangtw/fujsionpbx-docker-dev:$TAG
 ```
 
 #### View Container Logs
