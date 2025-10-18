@@ -1,36 +1,20 @@
 services:
   pbx:
-    # Build the image from the local Dockerfile so the local modified installer
-    # (copied from workspace) is included in the image.
-    # you can build by yourself
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
-    
-    #using docker hub image
-    image: fusionpbx-docker-dev:5.1
+    # Use pre-built image from Docker Hub
+    image: michaelfangtw/fusionpbx-docker-dev:5.1
 
-    # Use host networking to allow the container to access all host ports.
-    # This is necessary for the large RTP port range.
+    # Or build locally (uncomment to use)
+    # build:
+    #   context: .
+
+    # Host networking for RTP port range
     network_mode: "host"
-
-    # Set the container name for eaml: line 7: did not find expected key
     container_name: fusionpbx
-
-    # Restart the container automatically if it fails or if the host reboots
     restart: always
     privileged: true
 
-    # Load environment variables from a .env file at the compose root
-    #env_file:
-    #  - .env
-
-    # Persist fusionpbx webapp, configs and FreeSWITCH autoload configs on the host
+    # Persist configuration
     volumes:
       - ./config/fusionpbx:/etc/fusionpbx
 
-    #
-    # Maps to the /usr/sbin/init command. This is the main process for the container.
     entrypoint: ["/usr/sbin/init"]
-
-

@@ -1,20 +1,30 @@
 # FusionPBX Docker
-Base OS: Ubuntu 20.04/FusionPBX: 5.1/FreeSWITCH: 1.10.9/PHP: 7.4/PostgreSQL: 12
-```
-ref: fusionpbx install scripts :https://github.com/fusionpbx/fusionpbx-install.sh
-ref: docker hub:https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev
 
-```
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-michaelfangtw%2Ffusionpbx--docker--dev-blue?logo=docker)](https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev)
+[![License](https://img.shields.io/badge/License-Same%20as%20FusionPBX-green)](https://github.com/fusionpbx/fusionpbx)
+
+A comprehensive Docker solution for FusionPBX, providing a complete VoIP platform with all necessary components pre-configured and ready to deploy.
+
+**Stack**: Ubuntu 20.04 • FusionPBX 5.1 • FreeSWITCH 1.10.9 • PHP 7.4 • PostgreSQL 12
+
+## 📚 References
+
+- **FusionPBX Install Scripts**: [github.com/fusionpbx/fusionpbx-install.sh](https://github.com/fusionpbx/fusionpbx-install.sh)
+- **Docker Hub Repository**: [hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev](https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev)
 ## 📋 Table of Contents
-- [Software Stack](#-software-stack)
-- [Included Services](#-included-services)
-- [Quick Start](#-quick-start)
-- [Project Structure](#-project-structure)
-- [Default Credentials](#-default-credentials)
-- [Network Configuration](#-network-configuration)
-- [Data Persistence](#-data-persistence)
-- [Requirements](#-requirements)
-- [Troubleshooting](#-troubleshooting)
+
+- [🏗️ Software Stack](#️-software-stack)
+- [📦 Included Services](#-included-services)
+- [🚀 Quick Start](#-quick-start)
+- [📁 Project Structure](#-project-structure)
+- [🔐 Default Credentials](#-default-credentials)
+- [🌐 Network Configuration](#-network-configuration)
+- [💾 Data Persistence](#-data-persistence)
+- [⚙️ Requirements](#️-requirements)
+- [🔧 Troubleshooting](#-troubleshooting)
+- [📚 Additional Resources](#-additional-resources)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
 ## 🏗️ Software Stack
 
@@ -26,9 +36,9 @@ ref: docker hub:https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx
 | **PHP** | 7.4 |
 | **PostgreSQL** | 12 |
 
-## 📋 Included Services
+## � Included Services
 
-The Docker image includes the following services:
+The Docker image includes the following pre-configured services:
 
 - **iptables** - Firewall management
 - **sngrep** - SIP packet capture tool
@@ -41,37 +51,39 @@ The Docker image includes the following services:
 
 ## 🚀 Quick Start
 
-### 1. Configure Permissions
+### Step 1: Configure Permissions
 
-First, set the proper ownership for the config directory:
+Set the proper ownership for the config directory:
 
 ```bash
-chown 33:33 config -R
+sudo chown 33:33 config -R
 ```
 
-> **Note**: The `src` directory contains the complete FusionPBX installer source code, allowing for customization and transparency in the build process.
+> **💡 Note**: The `src` directory contains the complete FusionPBX installer source code, allowing for customization and transparency in the build process.
 
-### 2. Choose Your Deployment Method
+### Step 2: Choose Your Deployment Method
 
 #### Option A: Use Pre-built Image (Recommended)
+
 Pull the latest image from Docker Hub:
+
 ```bash
 docker pull michaelfangtw/fusionpbx-docker-dev:5.1
 ```
 
 #### Option B: Build Locally
+
 If you want to build the image locally:
+
 ```bash
 docker build -t fusionpbx-docker-dev:5.1 .
 ```
 
-**Docker Hub Repository**: [michaelfangtw/fusionpbx-docker-dev](https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev)
+### Step 3: Configure Docker Compose
 
-### 3. Configure Docker Compose
+The `docker-compose.yaml` file is already configured. Choose your preferred method:
 
-The `docker-compose.yaml` file is already configured. You can use either:
-
-- **Pre-built image** (default): `michaelfangtw/fusionpbx-docker-dev:5.1`
+- **Pre-built image** (default): Uses `michaelfangtw/fusionpbx-docker-dev:5.1`
 - **Local build**: Uncomment the `build` section in the compose file
 
 ```yaml
@@ -97,16 +109,24 @@ services:
     entrypoint: ["/usr/sbin/init"]
 ```
 
-### 4. Start the Container
+### Step 4: Start the Container
 
 ```bash
 docker compose up -d
 ```
 
-## � Project Structure
+### Step 5: Access the Web Interface
+
+Once the container is running, access FusionPBX at:
+
+- **URL**: [http://localhost](http://localhost)
+- **Username**: `admin@localhost`
+- **Password**: `password`
+
+## 📁 Project Structure
 
 ```
-fusionpbx-docker/
+fusionpbx-docker-dev/
 ├── config/                    # Configuration files
 │   └── fusionpbx/            # FusionPBX configuration
 ├── src/                      # Source code and installers
@@ -119,23 +139,26 @@ fusionpbx-docker/
 │       └── windows/          # Windows installation scripts
 ├── docker-compose.yaml       # Docker Compose configuration
 ├── Dockerfile               # Docker image definition
-└── README.md               # This file
+└── README.md               # Documentation
 ```
 
-The `src/fusionpbx-install.sh` directory contains the complete official installer with platform-specific scripts and resources for various operating systems.
+> **📝 Note**: The `src/fusionpbx-install.sh` directory contains the complete official installer with platform-specific scripts and resources for various operating systems.
 
 ## 🔐 Default Credentials
 
-### Web Interface
-- **URL**: http://localhost
-- **Username**: admin@localhost
-- **Password**: password
+### 🌐 Web Interface
 
-### Database (PostgreSQL)
-⚠️ **DO NOT CHANGE** - Required for proper operation:
-- **Host**: localhost
-- **User**: fusionpbx
-- **Password**: password
+- **URL**: [http://localhost](http://localhost)
+- **Username**: `admin@localhost`
+- **Password**: `password`
+
+### 🗄️ Database (PostgreSQL)
+
+> ⚠️ **IMPORTANT**: Do not change these credentials - they are required for proper operation
+
+- **Host**: `localhost`
+- **User**: `fusionpbx`
+- **Password**: `password`
 
 ## 🌐 Network Configuration
 
@@ -146,26 +169,43 @@ This container uses **host networking mode** to properly handle RTP traffic for 
 
 ## 💾 Data Persistence
 
-The following directory is mounted as a volume to persist configuration:
-- `./config/fusionpbx:/etc/fusionpbx` - FusionPBX configuration files
+Configuration data is persisted through Docker volumes:
 
-## 🔧 Requirements
+| Host Path | Container Path | Description |
+|-----------|----------------|-------------|
+| `./config/fusionpbx` | `/etc/fusionpbx` | FusionPBX configuration files |
 
-- Docker Engine 20.10+
-- Docker Compose v2.0+
-- Linux host (required for host networking mode)
+## ⚙️ Requirements
+
+- **Docker Engine**: 20.10+
+- **Docker Compose**: v2.0+
+- **Operating System**: Linux (required for host networking mode)
 
 ## 🔧 Troubleshooting
 
-### Common Issues
+### 🌐 Web Interface Issues
 
-#### Web Interface Not Accessible
-If you can't access the web interface at http://localhost:
-1. Check if the container is running: `docker ps`
-2. Check container logs: `docker logs fusionpbx`
-3. Ensure no other service is using port 80/443
+#### Problem: Cannot Access Web Interface
 
-#### Reset Admin Credentials
+If you can't access the web interface at [http://localhost](http://localhost):
+
+1. **Check container status:**
+   ```bash
+   docker ps
+   ```
+
+2. **View container logs:**
+   ```bash
+   docker logs fusionpbx
+   ```
+
+3. **Check port availability:**
+   ```bash
+   sudo netstat -tulpn | grep :80
+   ```
+
+#### Problem: Login Issues
+
 If you cannot log in to the web interface:
 
 1. **Access the container:**
@@ -173,7 +213,7 @@ If you cannot log in to the web interface:
    docker exec -it fusionpbx /bin/bash
    ```
 
-2. **Backup existing config:**
+2. **Backup existing configuration:**
    ```bash
    mv /etc/fusionpbx/config.conf /etc/fusionpbx/config.conf.old
    ```
@@ -184,52 +224,60 @@ If you cannot log in to the web interface:
    ./finish.sh
    ```
 
-4. **Default credentials will be:**
-   - **Username**: admin
-   - **Password**: password
+4. **Use default credentials:**
+   - **Username**: `admin`
+   - **Password**: `password`
 
-### Database Connection Issues
+### 🗄️ Database Issues
 
-If you encounter database-related login failures, re-run the installation steps inside the container:
+#### Problem: Database Connection Failures
 
-1. Access the container:
+If you encounter database-related login failures:
+
+1. **Access the container:**
    ```bash
    docker exec -it fusionpbx /bin/bash
    ```
 
-2. Navigate to the resources directory:
+2. **Navigate to resources directory:**
    ```bash
    cd /src/fusionpbx-install.sh/ubuntu/resources
    ```
 
-3. Recreate the database:
+3. **Recreate the database:**
    ```bash
    ./postgresql.sh    # Create database
    ./finish.sh        # Set admin credentials
    ```
 
-### Container Management
+### 🐳 Container Management
 
 #### Save Changes to Local Image
-If you make changes inside the container and want to save them:
+
+To preserve modifications made inside the container:
 
 ```bash
-# Make your changes inside the container
+# Make changes inside the container
 docker exec -it fusionpbx /bin/bash
-# ... make your modifications ...
+# ... perform your modifications ...
+# Exit the container
 
 # Commit changes to create a new image
-docker commit fusionpbx fusionpbx-docker-dev:5.1
+docker commit fusionpbx fusionpbx-docker-dev:5.1-custom
 ```
 
-#### Container Logs
-View real-time logs:
+#### View Container Logs
+
 ```bash
+# Real-time logs
 docker logs -f fusionpbx
+
+# Last 100 lines
+docker logs --tail 100 fusionpbx
 ```
 
-#### Restart Services
-Restart the container:
+#### Restart Container
+
 ```bash
 docker restart fusionpbx
 ```
