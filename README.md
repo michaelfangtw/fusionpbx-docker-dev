@@ -1,7 +1,7 @@
 # FusionPBX Docker
 Base OS: Ubuntu 20.04/FusionPBX: 5.1/FreeSWITCH: 1.10.9/PHP: 7.4/PostgreSQL: 12
 ```
-ref:ubuntu install :https://github.com/fusionpbx/fusionpbx-install.sh
+ref: fusionpbx install scripts :https://github.com/fusionpbx/fusionpbx-install.sh
 ref: docker hub:https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev
 
 ```
