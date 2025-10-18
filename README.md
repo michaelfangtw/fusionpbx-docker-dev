@@ -1,6 +1,6 @@
 # FusionPBX Docker
 
-A Docker implementation of FusionPBX based on the official [fusionpbx-install.sh](https://github.com/fusionpbx/fusionpbx-install.sh) installer.
+A Docker implementation of FusionPBX based on the official [fusionpbx-install.sh](https://github.com/fusionpbx/fusionpbx-install.sh) installer. This project includes the complete installer source code in the `src` directory for transparency and customization.
 ```
 ubuntu:20.04
 fusionpbx:5.1
@@ -32,6 +32,8 @@ First, set the proper ownership for the config directory:
 ```bash
 chown 33:33 config -R
 ```
+
+> **Note**: The `src` directory contains the complete FusionPBX installer source code, allowing for customization and transparency in the build process.
 
 ### 2. Build the Image (Optional)
 
@@ -89,7 +91,28 @@ docker compose up -d
 - **postgres:12
 - **Base OS**: Ubuntu 20.04
 
-## 🔐 Default Credentials
+## � Project Structure
+
+```
+fusionpbx-docker/
+├── config/                    # Configuration files
+│   └── fusionpbx/            # FusionPBX configuration
+├── src/                      # Source code and installers
+│   └── fusionpbx-install.sh/ # Official FusionPBX installer scripts
+│       ├── centos/           # CentOS installation scripts
+│       ├── debian/           # Debian installation scripts
+│       ├── devuan/           # Devuan installation scripts
+│       ├── freebsd/          # FreeBSD installation scripts
+│       ├── ubuntu/           # Ubuntu installation scripts
+│       └── windows/          # Windows installation scripts
+├── docker-compose.yaml       # Docker Compose configuration
+├── Dockerfile               # Docker image definition
+└── README.md               # This file
+```
+
+The `src/fusionpbx-install.sh` directory contains the complete official installer with platform-specific scripts and resources for various operating systems.
+
+## �🔐 Default Credentials
 
 ### Web Interface
 
@@ -141,7 +164,7 @@ If you encounter database-related login failures, re-run the installation steps 
 
 2. Navigate to the resources directory:
    ```bash
-   cd /usr/src/fusionpbx-install.sh/ubuntu/resources
+   cd /src/fusionpbx-install.sh/ubuntu/resources
    ```
 
 3. Recreate the database:
