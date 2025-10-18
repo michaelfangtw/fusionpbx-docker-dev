@@ -1,7 +1,7 @@
 services:
   pbx:
     # Use pre-built image from Docker Hub
-    image: michaelfangtw/fusionpbx-docker-dev:5.1
+    image: michaelfangtw/fusionpbx-docker-dev:5.2
 
     # Or build locally (uncomment to use)
     # build:
