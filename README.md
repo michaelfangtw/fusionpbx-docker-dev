@@ -220,8 +220,18 @@ If you cannot log in to the web interface:
 
 3. **Reset admin credentials:**
    ```bash
-   cd /src/fusionpbx-install.sh/ubuntu/resources
-   ./finish.sh
+   http://localhost
+   1.reset admin
+     id=admin 
+     pass=password 
+     domain:localhost
+
+     postgresq
+     db host:localhost
+     port:5432
+     id=fusionpbx
+     pass=password
+
    ```
 
 4. **Use default credentials:**
