@@ -86,19 +86,21 @@ docker build -t fusionpbx-docker-dev:5.2 .
 
 The `docker-compose.yaml` file is already configured. Choose your preferred method:
 
-- **Pre-built image** (default): Uses `michaelfangtw/fusionpbx-docker-dev:5.2`
-- **Local build**: Uncomment the `build` section in the compose file
+- **1. Pre-built image** (default): Uses `michaelfangtw/fusionpbx-docker-dev:5.2`
+- **1. Local build**: Uncomment the `build` section in the compose file
 
 ```yaml
 services:
   pbx:
-    # Use pre-built image from Docker Hub
+    # 1. Use pre-built image from Docker Hub
     image: michaelfangtw/fusionpbx-docker-dev:5.2
     
-    # Or build locally (uncomment to use)
+    # 2. Or build locally (uncomment to use)
     # build:
     #   context: .
-
+    # 3. Or build locally (uncomment to use)
+    # image: fusionpbx-docker-dev:5.2
+    
     # Host networking for RTP port range
     network_mode: "host"
     container_name: fusionpbx
@@ -124,7 +126,7 @@ Once the container is running, access FusionPBX at:
 
 - **URL**: [http://localhost](http://localhost)
 - **Username**: `admin@localhost`
-- **Password**: `password`
+- **Password**: `YOUR_PASSWORD`  *(set in .env or config.sh)*
 
 ## 📁 Project Structure
 
@@ -153,7 +155,7 @@ fusionpbx-docker-dev/
 
 - **URL**: [http://localhost](http://localhost)
 - **Username**: `admin@localhost`
-- **Password**: `password`
+- **Password**: `YOUR_PASSWORD`  *(set in .env or config.sh)*
 
 ### 🗄️ Database (PostgreSQL)
 
@@ -161,7 +163,7 @@ fusionpbx-docker-dev/
 
 - **Host**: `localhost`
 - **User**: `fusionpbx`
-- **Password**: `password`
+- **Password**: `YOUR_PASSWORD`  *(set in .env or config.sh)*
 
 ## 🌐 Network Configuration
 
@@ -226,20 +228,20 @@ If you cannot log in to the web interface:
    http://localhost
    1.reset admin
      id=admin 
-     pass=password 
+     pass=YOUR_PASSWORD  *(set in .env or config.sh)*
      domain:localhost
 
      postgresq
      db host:localhost
      port:5432
      id=fusionpbx
-     pass=password
+     pass=YOUR_PASSWORD  *(set in .env or config.sh)*
 
    ```
 
 4. **Use default credentials:**
    - **Username**: `admin`
-   - **Password**: `password`
+   - **Password**: `YOUR_PASSWORD`
 
 ### 🗄️ Database Issues
 
