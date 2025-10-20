@@ -74,8 +74,11 @@ docker pull michaelfangtw/fusionpbx-docker-dev:5.2
 #### Option B: Build Locally
 
 If you want to build the image locally:
+with your password
 
 ```bash
+#change your password
+copy .env.sample .env
 docker build -t fusionpbx-docker-dev:5.2 .
 ```
 
