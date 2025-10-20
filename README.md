@@ -1,8 +1,5 @@
 # FusionPBX Docker
 
-[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-michaelfangtw%2Ffusionpbx--docker--dev-blue?logo=docker)](https://hub.docker.com/repository/docker/michaelfangtw/fusionpbx-docker-dev)
-[![License](https://img.shields.io/badge/License-Same%20as%20FusionPBX-green)](https://github.com/fusionpbx/fusionpbx)
-
 [![Docker Hub](https://img.shields.io/docker/pulls/michaelfangtw/fusionpbx-docker-dev?logo=docker&label=michaelfangtw/fusionpbx-docker-dev)](https://hub.docker.com/r/michaelfangtw/fusionpbx-docker-dev) [![License](https://img.shields.io/badge/License-Same%20as%20FusionPBX-green)](https://github.com/fusionpbx/fusionpbx)
 
 A comprehensive Docker solution for FusionPBX, providing a complete VoIP platform with all necessary components pre-configured and ready to deploy.
